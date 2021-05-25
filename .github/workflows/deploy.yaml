@@ -1,0 +1,22 @@
+name: BootCamp01
+
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Node JS
+      uses: actions/setup-node@v2-beta
+      with: 
+        node-version: 12
+    - name: Install Surge
+      run: npm install -g surge
+    - name: Run Surge
+      run: surge ./ bootcamp01_publish.surge.sh --token ${{secrets.asd}}
+    
+      
